@@ -1,0 +1,86 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: cluster-admin-binding
+subjects:
+- kind: Group
+  name: "ClusterAdmins"
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: sales-developer-binding
+  namespace: sales
+subjects:
+- kind: Group
+  name: "SalesDevs"
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: smarthome-developer-binding
+  namespace: smarthome
+subjects:
+- kind: Group
+  name: "SmartHomeDevs"
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: system-operator-binding
+  namespace: system
+subjects:
+- kind: Group
+  name: "SystemOps"
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: system-operator-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: utilities-readonly-binding
+  namespace: utilities
+subjects:
+- kind: Group
+  name: "Managers"
+  apiGroup: rbac.authorization.k8s.io
+- kind: Group
+  name: "Analysts"
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: readonly-role
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: data-readonly-binding
+  namespace: data
+subjects:
+- kind: Group
+  name: "Analysts"
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: readonly-role
+  apiGroup: rbac.authorization.k8s.io
